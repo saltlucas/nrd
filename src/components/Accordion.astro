@@ -1,0 +1,37 @@
+---
+  const { orderedList } = Astro.props;
+---
+<div class="accordion">
+  <slot />
+</div>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+
+  // function closeAllItems(items) {
+  //   items.forEach(item => {
+  //     item.classList.remove('active');
+  //   });
+  // }
+
+  accordions.forEach(accordion => {
+    const accordionItems = accordion.querySelectorAll('.accordion__item');
+    accordionItems.forEach(item => {
+      const itemHeader = item.querySelector('.accordion__item-header');
+      itemHeader.addEventListener('click', (element) => {
+        if(item.classList.contains('active')) {
+          // closeAllItems(accordionItems);
+          item.classList.remove('active');  
+        } else {
+          item.classList.add('active');
+        }    
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion {
+    background-color: transparent;
+  }
+</style>

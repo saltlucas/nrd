@@ -1,0 +1,20 @@
+<div class="slide">
+  <slot />
+</div>
+
+<style>
+  @import '../styles/common/media-queries.css';
+
+  .slide {
+    width: 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+    padding: 20px;
+    box-sizing: border-box;
+
+    @media (--lg) {
+      width: 40%;
+      min-width: 40%;
+    }
+  }
+</style>

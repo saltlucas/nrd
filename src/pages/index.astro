@@ -1,81 +1,266 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import downArrow from '/assets/down-arrow.svg';
+import ClientCard from '../components/ClientCard.astro';
+import Logos from '../components/Logos.astro';
+import Accordion from '../components/Accordion.astro';
+import AccordionItem from '../components/AccordionItem.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="New Rev Digital">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<section class="page__header section--full">
+			<h1>Accelerate your results with <span class="underline">Performance</span> Video Marketing</h1>
+		</section>
+		<section class="highlight section--full">
+			<div class="highlight__content">
+				<p class="highlight__title">At NewRev, we believe in ROI driven creative, backed by new and exciting media outlets.</p>
+				<div class="highlight__button">
+					<p>Check out our reel</p> 
+					<img loading="lazy" class="highlight__down-arrow" alt="down-arrow" src={downArrow} />
+				</div>
+			</div>
+		</section>
+		<section class="highlight-video section--full">
+			<!-- <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/778256941?h=315e814014&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
+			<video class="highlight-video__video" controls autoplay muted loop>
+				<!-- <source src="/asset/cc0-videos/flower.webm" type="video/webm"> -->
+		
+				<source src="/assets/video/nrd-sizzle.mp4" type="video/mp4">
+		
+				Download the
+				<!-- <a href="/media/cc0-videos/flower.webm">WEBM</a> -->
+				or
+				<a href="/media/cc0-videos/flower.mp4">MP4</a>
+				video.
+			</video> 
+		</section>
+		<section class="highlight-video__footer section--full">
+			<p class="highlight-video__footer-left">
+				NewRev Digital
+			</p>
+			<p class="highlight-video__footer-right">
+				&copy; 2023
+			</p>
+		</section>
+		<section class="work__header section--full">
+			<p class="work__header-title">
+				Our Work
+			</p>
+			<p class="work__header-content">
+				Beautifully Crafted <span class="underline">Content</span> That Delivers Results
+			</p>
+		</section>
+		<section class="work__cta section--full">
+			<a class="button button--icon button--black">See Our Work</a>
+		</section>
+		<section class="work__highlights section--full">
+			<ClientCard alt="Client 1" src="/assets/client1.jpg" title="Client 1" industry="Ecommerce" />
+			<ClientCard alt="Client 2" src="/assets/client2.jpg" title="Client 2" industry="Ecommerce" />
+		</section>
+		<section class="work__content section--full">
+			<p>
+				Once we've bonded, we're stuck like glue. Our solid client relationships speak volumes about the collaborative and innovative work we do.
+			</p>
+		</section>
+		<section class="work__clients section--full">
+			<Logos>
+				<img class="logo" loading="lazy" src="/assets/samsung.svg">
+				<img class="logo" loading="lazy" src="/assets/bud-light.svg">
+				<img class="logo" loading="lazy" src="/assets/audi.png">
+				<img class="logo" loading="lazy" src="/assets/Lime.svg">
+				<img class="logo" loading="lazy" src="/assets/service-channel.png">
+				<img class="logo" loading="lazy" src="/assets/aarp.png">
+				<img class="logo" loading="lazy" src="/assets/eaze.png">
+				<img class="logo" loading="lazy" src="/assets/teladoc.png">
+			</Logos>
+		</section>
+		<section class="process__header section--full">
+			<p class="process__header-title">
+				Our Approach
+			</p>
+			<p class="process__header-content">
+				Where We Unite Strategy, Storytelling, &  Distribution
+			</p>
+		</section>
+		<section class="process__cta section--full">
+			<a class="button button--icon button--black">Our Services</a>
+		</section>
+		<section class="process__steps section--full">
+			<Accordion orderedList="true">
+				<AccordionItem preLabel="01" header="Discovery & Research">
+					<h3>Unveil your brand story</h3>
+					<div>
+						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					</div>
+				</AccordionItem>
+				<AccordionItem preLabel="02" header="Video Production">
+					<h3>Video that turns heads</h3>
+					<div>
+						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					</div>
+				</AccordionItem>
+				<AccordionItem preLabel="03" header="Next-Level Media Buying">
+					<h3>We get results</h3>
+					<div>
+						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					</div>
+				</AccordionItem>
+			</Accordion>
+		</section>
+		<section class="about section--full">
+			<img class="about__team" src="/assets/nrm-team.jpg" />
+			<div class="about__content">
+				<h2>Innovative Video Advertising for Today's Brands</h2>
+				<p>We won't say we have the secret sauce. But, our recipes are damn good.</p>
+				<a class="button button--icon button--black">About Us</a>
+			</div>
+		</section>
 	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
+	@import '../styles/common/media-queries.css';
+
 	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
+		max-width: 1000px;
+
+		@media (--lg) {
+			font-size: 72px;
+		}
+
+		.underline {
+			position: relative;
+		}
+
+		.underline::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 20px;
+			background-image: url(/assets/underline5.svg);
+			left: 0;
+			bottom: -20px;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+
+	.highlight__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 0.5rem;
+		margin-top: 8rem;
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
+
+	.highlight__title {
+		font-size: 34px;
+		line-height: 1.2;
+
+		@media (--md) {
+			max-width: 658px;
+		}
 	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
+
+	.highlight__button {
+		display: flex;
+		column-gap: 0.25rem;
+		align-items: center;
 	}
-	.instructions strong {
-		color: rgb(var(--accent));
+
+	.highlight__down-arrow {
+		width: 32px;
+		height: 32px;
 	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
+
+	.highlight-video__video {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.highlight-video__footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 0.5rem;
+	}
+
+	.work__header {
+		@media (--lg) {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			min-height: 50vh		}
+	}
+	
+	.work__header-title {
+		font-size: 30px;
+	}
+
+	.work__header-content {
+		font-size: 72px;
+		line-height: 1.3;
+		max-width: 900px;
+	}
+
+	.work__cta {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 2rem;
+	}
+
+	.newline {
+		display: block;
+	}
+
+	.work__highlights {
+		display: flex;
+		column-gap: 2rem;
+	}
+
+	.work__content {
+		font-size: 35px;
+		max-width: 600px;
+		line-height: 1.4;
+		margin-top: 8rem;
+		padding-bottom: 2rem;
+	}
+
+	.work__clients {
+		margin-top: 4rem;
+		padding-bottom: 10rem;
+		border-bottom: 1px solid var(--color-black);
+	}
+
+	.process__header {
+		@media (--lg) {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			min-height: 50vh
+		}
+	}
+	
+	.process__header-title {
+		font-size: 30px;
+	}
+
+	.process__header-content {
+		font-size: 72px;
+		line-height: 1.3;
+		max-width: 900px;
+	}
+
+	.process__cta {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 2rem;
 	}
 </style>

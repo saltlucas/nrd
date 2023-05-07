@@ -1,0 +1,43 @@
+---
+const {alt, src, title, industry} = Astro.props;
+---
+
+<div class="client-card">
+  <img loading="lazy" alt={alt} src={src}>
+  <div class="client-card__content">
+    <p class="client-card__title">{title}</p>
+    <p class="client-card__industry">({industry})</p>
+  </div>
+</div>
+
+<style>
+  @import '../styles/common/media-queries.css';
+
+  .client-card {
+    @media (--lg) {
+      flex-basis: 50%;
+      width: 50%;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .client-card__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .client-card__title {
+    font-size: 32px;
+  }
+
+  .client-card__industry {
+    color: #acacac;
+    font-size: 18px;
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+  const { header, preLabel } = Astro.props;
+---
+
+<div class="accordion__item">
+  <div class="accordion__item-header">
+    { preLabel && <span class="accordion__item-label">{preLabel}</span>}
+    { preLabel && <span class="accordion__item-dash"></span>}
+    { header }
+    <!-- <svg class="accordion__plus" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M47.2402 8.4139C42.0552 3.22807 35.1567 0.369141 27.8236 0.369141C20.4888 0.369141 13.5943 3.22807 8.40694 8.4139C-2.29841 19.1257 -2.29841 36.5433 8.40694 47.2493C13.5941 52.4338 20.4882 55.2936 27.8236 55.2936C35.1566 55.2936 42.055 52.4338 47.2402 47.2489C52.4256 42.0613 55.2829 35.1676 55.2829 27.8301C55.2833 20.4971 52.426 13.6008 47.2406 8.41346L47.2402 8.4139ZM44.7946 44.8028C40.2635 49.336 34.236 51.8357 27.8234 51.8357C21.4109 51.8357 15.3858 49.3359 10.8523 44.8028C1.49381 35.4418 1.49381 20.2195 10.8523 10.8583C15.386 6.32719 21.4113 3.82963 27.8234 3.82963C34.2356 3.82963 40.2622 6.32675 44.7946 10.8583C49.3257 15.3941 51.8259 21.4189 51.8259 27.8294C51.825 34.2446 49.3261 40.2715 44.7946 44.8028Z" />
+      <line class="plus__vertical" x1="28" y1="9" x2="28" y2="46" stroke-width="2"/>
+      <line class="plus__horizontal" x1="9" y1="27" x2="46" y2="27" stroke-width="2"/>
+    </svg> -->
+    <svg class="accordion__plus" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M46.8622 8.04476C41.6773 2.85893 34.7788 0 27.4456 0C20.1109 0 13.2164 2.85893 8.02901 8.04476C-2.67634 18.7565 -2.67634 36.1742 8.02901 46.8802C13.2161 52.0647 20.1103 54.9245 27.4456 54.9245C34.7787 54.9245 41.6771 52.0647 46.8622 46.8797C52.0476 41.6922 54.9049 34.7984 54.9049 27.4609C54.9054 20.1279 52.0481 13.2317 46.8627 8.04432L46.8622 8.04476ZM44.4167 44.4336C39.8856 48.9669 33.8581 51.4665 27.4455 51.4665C21.0329 51.4665 15.0079 48.9668 10.4744 44.4336C1.11588 35.0726 1.11588 19.8503 10.4744 10.4891C15.0081 5.95805 21.0334 3.46049 27.4455 3.46049C33.8577 3.46049 39.8843 5.95761 44.4167 10.4891C48.9478 15.0249 51.4479 21.0498 51.4479 27.4603C51.4471 33.8755 48.9482 39.9023 44.4167 44.4336Z" fill="#2F2F2F"/>
+      <line class="plus__vertical" x1="9" y1="27" x2="46" y2="27" stroke="#2F2F2F" stroke-width="2"/>
+      <line class="plus__horizontal" x1="27" y1="46.5" x2="27" y2="9.5" stroke="#2F2F2F" stroke-width="2"/>
+      </svg>
+      
+  </div>
+  <div class="accordion__item-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  @import '../styles/common/media-queries.css';
+
+  .accordion__item-label {
+    color: var(--color-gray);
+  }
+
+  .accordion__item-dash {
+    display: flex;
+    align-items: center;
+  
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 24px;  
+      height: 2px;
+      background-color: var(--color-black);
+    }
+  }
+
+  .accordion__item {
+    border-bottom: 1px solid var(--color-gray);
+    padding: calc(3*var(--spacer)) var(--spacer);
+    transition: 0.25s;
+
+    @media (--lg) {
+      padding: calc(3*var(--spacer)) calc(3*var(--spacer));
+    }
+
+    &:hover {
+      background-color: var(--color-black);
+      color: var(--color-white);
+
+      .accordion__item-dash::after {
+        background-color: var(--color-white);
+      }
+
+      .accordion__plus {
+        path {
+          fill: var(--color-white);
+        }
+
+        line {
+          stroke: var(--color-white);
+        }
+      }
+    }
+  
+    &:first-child {
+      border-top: 1px solid var(--color-gray);
+    }
+
+    &.active {
+      .accordion__item-content {
+        display: block;
+      }
+
+      .accordion__item-header::after {
+        background-image: url('/assets/minus.svg');
+      }
+
+      .plus__vertical {
+        /* display: none; */
+      }
+
+      .plus__horizontal {
+        /* transform: rotate(90deg) translate(0, 2px); */
+        transform: rotate(90deg);
+      }
+
+    }
+  }
+
+  .accordion__item-header {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+    font-size: 40px;
+    cursor: pointer;
+
+    /* &::after {
+      content: '';
+      background-image: url('/assets/plus.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline-block;
+      margin-left: auto;
+      width: 54px;
+      height: 54px;
+    } */
+  }
+
+  .accordion__plus {
+    width: 54px;
+    height: 54px;
+    margin-left: auto;
+    display: inline-block;
+
+    path {
+      fill: var(--color-black);
+    }
+
+    line {
+      stroke: var(--color-black);
+    }
+  }
+
+  .plus__horizontal {
+    transition: transform 0.25s;
+    transform-origin: center;
+  }
+
+  .accordion__item-content {
+    display: none;
+  }
+</style>

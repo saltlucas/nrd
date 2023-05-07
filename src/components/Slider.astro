@@ -1,0 +1,91 @@
+---
+  // Example: 
+  // <Slider client:visible>
+  // 	<Slide>
+  // 		<ClientCard alt="Client 1" src="/assets/client1.jpg" title="Client 1" industry="Industry" />
+  // 	</Slide>
+  // 	<Slide>
+  // 		<ClientCard alt="Client 2" src="/assets/client2.jpg" title="Client 2" industry="Ecommerce" />
+  // 	</Slide>
+  // 	<Slide>
+  // 		<ClientCard alt="Client 3" src="/assets/client1.jpg" title="Client 3" industry="Funsies" />
+  // 	</Slide>
+  // 	<Slide>
+  // 		<ClientCard alt="Client 4" src="/assets/client2.jpg" title="Client 4" industry="Games" />
+  // 	</Slide>
+  // </Slider>
+
+---
+<div class="slider">
+  <ul 
+    class="slides"
+  >
+    <slot />
+  </ul>
+</div>
+
+<script>
+  const slider = document.querySelector('.slides');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    slider.scrollLeft = scrollLeft - walk;
+    console.log(walk);
+  });
+</script>
+
+
+<style>
+  .slider {
+    overflow-x: hidden;
+  }
+
+  .slides {
+    position: relative;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /* scroll-snap-type: x mandatory; */
+    cursor: grab;
+    cursor: -webkit-grab;
+    width: 100%;
+    white-space: nowrap;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    /* transform: scale(0.98); */
+    will-change: transform;
+    user-select: none;
+    cursor: url("data:image/svg+xml,%3Csvg width='126' height='126' viewBox='0 0 126 126' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='63' cy='63' r='63' fill='%23D9D9D9'/%3E%3Cpath d='M32.144 73V50.12H40.464C43.8133 50.12 46.3413 51.1547 48.048 53.224C49.7547 55.2933 50.608 58.0987 50.608 61.64C50.608 65.16 49.7227 67.9333 47.952 69.96C46.1813 71.9867 43.6107 73 40.24 73H32.144ZM35.024 70.472H40.144C45.1573 70.472 47.664 67.528 47.664 61.64C47.664 55.624 45.232 52.616 40.368 52.616H35.024V70.472ZM56.227 56.456V59.208H56.291C56.8243 58.3333 57.5177 57.6293 58.371 57.096C59.2243 56.5413 60.1737 56.264 61.219 56.264C61.603 56.264 61.955 56.328 62.275 56.456V58.952H62.179C61.859 58.8453 61.475 58.792 61.027 58.792C59.7043 58.792 58.5737 59.2613 57.635 60.2C56.6963 61.1173 56.227 62.3227 56.227 63.816V73H53.635V56.456H56.227ZM76.9708 73.16C75.3281 73.16 74.3788 72.3387 74.1228 70.696H74.0908C72.7254 72.4453 70.8908 73.32 68.5868 73.32C66.9441 73.32 65.6001 72.9253 64.5548 72.136C63.5094 71.3467 62.9868 70.2053 62.9868 68.712C62.9868 67.944 63.1041 67.2827 63.3388 66.728C63.5948 66.152 63.9148 65.6933 64.2988 65.352C64.6828 64.9893 65.2054 64.68 65.8668 64.424C66.5494 64.1467 67.2001 63.944 67.8188 63.816C68.4374 63.6667 69.2268 63.5173 70.1868 63.368C70.8054 63.2827 71.2428 63.2187 71.4988 63.176C71.7761 63.112 72.1281 63.0267 72.5548 62.92C72.9814 62.792 73.2801 62.6533 73.4508 62.504C73.6214 62.3547 73.7814 62.152 73.9308 61.896C74.0801 61.64 74.1548 61.3413 74.1548 61C74.1548 60.0613 73.8241 59.3467 73.1628 58.856C72.5228 58.344 71.6161 58.088 70.4427 58.088C67.7761 58.088 66.4001 59.304 66.3148 61.736H63.8188C63.8614 60.0507 64.4374 58.696 65.5468 57.672C66.6774 56.648 68.2988 56.136 70.4108 56.136C74.4854 56.136 76.5228 57.8853 76.5228 61.384V69.256C76.5228 69.9813 76.6401 70.4933 76.8748 70.792C77.1308 71.0907 77.6001 71.1653 78.2828 71.016H78.3787V72.904C77.9521 73.0747 77.4828 73.16 76.9708 73.16ZM69.1628 71.336C70.7628 71.336 72.0001 70.8773 72.8748 69.96C73.7494 69.0213 74.1868 67.9973 74.1868 66.888V64.072C73.3974 64.5627 72.1388 64.968 70.4108 65.288C69.7708 65.416 69.2694 65.5227 68.9068 65.608C68.5441 65.672 68.1281 65.8 67.6588 65.992C67.1894 66.1627 66.8374 66.3547 66.6028 66.568C66.3681 66.7813 66.1654 67.0693 65.9948 67.432C65.8241 67.7733 65.7388 68.1787 65.7388 68.648C65.7388 70.44 66.8801 71.336 69.1628 71.336ZM86.8833 78.504C84.7713 78.504 83.1073 78.0987 81.8913 77.288C80.6966 76.4987 80.0246 75.3787 79.8753 73.928H82.2753C82.5099 75.6133 84.0246 76.456 86.8193 76.456C89.9766 76.456 91.5553 75.0373 91.5553 72.2V69.864H91.4913C90.8299 70.7173 90.1259 71.3573 89.3793 71.784C88.6326 72.2107 87.7046 72.424 86.5953 72.424C84.4619 72.424 82.7233 71.656 81.3793 70.12C80.0353 68.584 79.3633 66.6213 79.3633 64.232C79.3633 61.736 80.0353 59.752 81.3793 58.28C82.7446 56.808 84.4299 56.072 86.4353 56.072C88.6113 56.072 90.2966 56.904 91.4913 58.568H91.5553V56.456H94.1473V72.104C94.1473 74.216 93.4966 75.8053 92.1953 76.872C90.9153 77.96 89.1446 78.504 86.8833 78.504ZM86.7233 70.248C90.0726 70.248 91.7473 68.2 91.7473 64.104C91.7473 60.2 90.0619 58.248 86.6913 58.248C85.1766 58.248 84.0139 58.792 83.2033 59.88C82.4139 60.968 82.0193 62.4293 82.0193 64.264C82.0193 66.0987 82.4246 67.56 83.2352 68.648C84.0459 69.7147 85.2086 70.248 86.7233 70.248Z' fill='%232F2F2F'/%3E%3C/svg%3E"), auto;
+  }
+
+  .slides.active {    
+    background: rgba(255,255,255,0.3);
+    opacity: 0.75;
+    /* cursor: grabbing;
+    cursor: -webkit-grabbing; */
+    transform: scale(1);
+	  cursor: url("data:image/svg+xml,%3Csvg width='46' height='46' viewBox='0 0 46 46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='23' cy='23' r='23' fill='%23D9D9D9'/%3E%3C/svg%3E"), auto;
+  }
+</style>
+
+

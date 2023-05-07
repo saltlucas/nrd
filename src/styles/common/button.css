@@ -1,0 +1,27 @@
+.button {
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 0 30px;
+}
+
+.button--icon {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 14px;
+  height: 50px;
+}
+
+.button--icon::after {
+  content: '';
+  width: 27px;
+  height: 27px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/assets/button-arrow.svg');
+}
+
+.button--black {
+  background-color: black;
+  color: #fff;
+}

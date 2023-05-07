@@ -1,0 +1,28 @@
+html {
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
+
+  &:hover {
+    color: #9c07e2;
+  }
+}
+
+ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+.section--full {
+  padding: 0 calc(var(--spacer)*2);
+}
+
+.section--contained {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding: 0 calc(var(--spacer)*2);
+}
