@@ -27,3 +27,6 @@ pnpm-debug.log*
 *.log
 
 package-lock.json
+
+#assets
+video/
