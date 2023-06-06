@@ -5,6 +5,7 @@ import ClientCard from '../components/ClientCard.astro';
 import Logos from '../components/Logos.astro';
 import Accordion from '../components/Accordion.astro';
 import AccordionItem from '../components/AccordionItem.astro';
+import FooterLarge from '../components/FooterLarge.astro';
 ---
 
 <Layout title="New Rev Digital">
@@ -23,7 +24,7 @@ import AccordionItem from '../components/AccordionItem.astro';
 		</section>
 		<section class="highlight-video section--full">
 			<!-- <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/778256941?h=315e814014&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
-			<video class="highlight-video__video" controls autoplay muted loop>
+			<video class="highlight-video__video" autoplay muted loop>
 				<!-- <source src="/asset/cc0-videos/flower.webm" type="video/webm"> -->
 		
 				<source src="/assets/video/nrd-sizzle.mp4" type="video/mp4">
@@ -111,12 +112,13 @@ import AccordionItem from '../components/AccordionItem.astro';
 		<section class="about section--full">
 			<img class="about__team" src="/assets/nrm-team.jpg" />
 			<div class="about__content">
-				<h2>Innovative Video Advertising for Today's Brands</h2>
-				<p>We won't say we have the secret sauce. But, our recipes are damn good.</p>
-				<a class="button button--icon button--black">About Us</a>
+				<h2 class="about__content-title">Innovative Video Advertising for Today's Brands</h2>
+				<p class="about__content-line">We won't say we have the secret sauce. But, our recipes are damn good.</p>
+				<a class="about__button button button--icon button--black">About Us</a>
 			</div>
 		</section>
 	</main>
+	<FooterLarge />
 </Layout>
 
 <style>
@@ -262,5 +264,43 @@ import AccordionItem from '../components/AccordionItem.astro';
 		display: flex;
 		justify-content: flex-end;
 		margin-bottom: 2rem;
+	}
+
+	.about {
+		@media (--lg) {
+			display: grid;
+			padding: 8rem 0 4rem 0;
+			grid-template-columns: 50% 50%;
+		}
+	}
+
+	.about__team {
+		display: block;
+	}
+
+	.about__content {
+		padding: 0 4rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.about__content-title {
+		margin-bottom: auto;
+
+		@media (--lg) {
+			font-size: 74px;
+		}
+	}
+
+	.about__content-line {
+		font-size: 36px;
+	}
+
+	.about__button {
+		dipslay: inline-block;
+		margin-top: 1.5rem;
+		@media (--lg) {
+			align-self: flex-start;
+		}
 	}
 </style>

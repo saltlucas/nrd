@@ -22,6 +22,15 @@
 }
 
 .button--black {
-  background-color: black;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.button--white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+
+  &.button--icon {
+    background-image: url('/assets/button-arrow--white.svg');
+  }
 }

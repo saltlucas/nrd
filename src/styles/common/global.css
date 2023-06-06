@@ -16,6 +16,11 @@ ul {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .section--full {
   padding: 0 calc(var(--spacer)*2);
 }

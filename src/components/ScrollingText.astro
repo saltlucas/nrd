@@ -1,0 +1,71 @@
+<div class="m-scroll">
+  <div class="m-scroll__title">
+    <div>
+      <div class="scroll-text">
+        We make dope content!
+      </div>
+      <div class="scroll-text">
+        We make dope content!
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .m-scroll {
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  padding: 5rem 0;
+  z-index: 1;
+
+  &__title {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    transform: scale(2);
+    transition: all 0.5s ease;
+      
+    & > div {
+      display: flex;
+      animation: scrollText 33s infinite linear;
+    }
+  
+    .scroll-text {
+      margin: 0;
+      font-size: 104px;
+      color: #393939;
+      text-transform: uppercase;
+      transition: all 0.5s ease;
+    }
+
+    &:hover {
+      .scroll-text {
+        -webkit-text-stroke: 1px white;
+        color: transparent;
+      }
+
+      > div {
+        animation-duration: 10s;
+      }
+    }
+  }
+}
+
+/*div:hover {
+  animation-play-state: paused;
+}*/
+@keyframes scrollText {
+  from   { transform: translateX(0%); }
+  to { transform: translateX(-50%); }
+}
+</style>

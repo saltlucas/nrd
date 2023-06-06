@@ -1,0 +1,69 @@
+---
+  import ScrollingText from './ScrollingText.astro';
+  import ContactForm from './ContactForm.astro';
+---
+<footer class="footer-large">
+  <ScrollingText />
+  <div class="footer-contact">
+    <div class="footer-contact__info">
+      <div class="contact__mode contact__mode--link">
+        <p class="contact__label">Contact us</p>
+        <p class="contact__text">Have an idea? Let’s create it and scale it.</p>
+      </div>
+      <div class="contact__mode">
+        <p class="contact__label">Want to reach someone quicker?</p>
+        <p class="contact__text"><a href="tel:1.866.NewRev">1.866.NewRev</a></p>
+        <p class="contact__text"><a href="mailto:Hello@newrevdigital.com">Hello@newrevdigital.com</a></p>
+      </div>
+    </div>
+    <div class="footer-contact__form">
+      <ContactForm />
+    </div>
+  </div>
+</footer>
+
+<style>
+  @import '../styles/common/media-queries.css';
+
+  .footer-large {
+    background-color: var(--color-black);
+  }
+
+  .footer-highlight {
+    font-size: 102px;
+    color: #393939;
+  }
+
+  .footer-contact {
+    color: var(--color-white);
+
+    @media (--lg) {
+      display: grid;
+      grid-template: 50% 50%;
+      padding: 0 4rem;
+    }
+  }
+
+  .contact__mode {
+    max-width: 350px;
+  }
+
+  .contact__mode--link {
+    margin-bottom: 6rem;
+  }
+
+  .contact__label {
+    color: #acacac;
+    font-size: 16px;
+  }
+
+  .contact__text {
+    font-size: 36px;
+    letter-spacing: -0.3px;
+    color: #FAFAFA;
+  }
+
+  a {
+    color: #fff;
+  }
+</style>
