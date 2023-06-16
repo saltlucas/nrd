@@ -34,3 +34,10 @@
     background-image: url('/assets/button-arrow--white.svg');
   }
 }
+
+.button--outline {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "astro": "^2.2.1"
   },
   "devDependencies": {

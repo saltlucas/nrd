@@ -1,9 +1,13 @@
 ---
-const {alt, src, title, industry} = Astro.props;
+const {alt, src, video, title, industry} = Astro.props;
 ---
 
 <div class="client-card">
-  <img loading="lazy" alt={alt} src={src}>
+  <!-- <img loading="lazy" alt={alt} src={src}> -->
+  <video class="client-card__video" controls muted loop>
+    <source src={video} type="video/mp4">
+    <a href="/media/cc0-videos/flower.mp4">MP4</a>
+  </video> 
   <div class="client-card__content">
     <p class="client-card__title">{title}</p>
     <p class="client-card__industry">({industry})</p>
@@ -32,6 +36,10 @@ const {alt, src, title, industry} = Astro.props;
     align-items: center;
   }
 
+  .client-card__video {
+    width: 100%;
+  }
+
   .client-card__title {
     font-size: 32px;
   }
@@ -40,4 +48,5 @@ const {alt, src, title, industry} = Astro.props;
     color: #acacac;
     font-size: 18px;
   }
+
 </style>

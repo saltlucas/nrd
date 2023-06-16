@@ -2,51 +2,419 @@
 // import { isRegistered, registerUser } from "../../data/users"
 // import { isValidEmail } from "../../utils/isValidEmail";
 
-// const errors = { username: "", email: "", password: "" };
+// const errors = { name: "", email: "", password: "" };
 // if (Astro.request.method === "POST") {
 //   try {
 //     const data = await Astro.request.formData();
-//     const name = data.get("username");
+//     const name = data.get("name");
 //     const email = data.get("email");
-//     const password = data.get("password");
-//     if (typeof name !== "string" || name.length < 1) {
-//       errors.username += "Please enter a username. ";
+
+//     errors.name += "we got errors buddy";
+//     console.log(name);
+
+//     if (name.length === 1) {
+//       errors.name += name;
 //     }
-//     if (typeof email !== "string" || !isValidEmail(email)) {
-//       errors.email += "Email is not valid. ";
-//     } else if (await isRegistered(email)) {
-//       errors.email += "Email is already registered. ";
-//     }
-//     if (typeof password !== "string" || password.length < 6) {
-//       errors.password += "Password must be at least 6 characters. ";
-//     }
-//     if (!Object.keys(errors).length) {
-//       await registerUser({name, email, password});
-//       return Astro.redirect("/login");
-//     }
+
+    // if (typeof email !== "string" || !isValidEmail(email)) {
+    //   errors.email += "Email is not valid. ";
+    // } else if (await isRegistered(email)) {
+    //   errors.email += "Email is already registered. ";
+    // }
+
+    // if (!Object.keys(errors).length) {
+    //   await registerUser({name, email, password});
+    //   return Astro.redirect("/login");
+    // }
 //   } catch (error) {
 //     if (error instanceof Error) {
 //       console.error(error.message);
 //     }
 //   }
 // }
+
 ---
-<h1>Register</h1>
-<form method="POST">
-  <label>
-    Username:
-    <input type="text" name="username" />
-  </label>
-  <!-- {errors.username && <p>{errors.username}</p>} -->
-  <label>
-    Email:
-    <input type="email" name="email" required />
-  </label>
-  <!-- {errors.email && <p>{errors.email}</p>} -->
-  <label>
-    Password:
-    <input type="password" name="password" required minlength="6" />
-  </label>
+<form class="contact-form" novalidate method="POST">
+  <fieldset class="form__group">
+    <input class="form__input" type="text" id="name" name="name" required />
+    <label class="form__label" for="name">Name</label>
+    <div class="form__input-error">Provide your name.</div>
+  </fieldset>
+  <fieldset class="form__group">
+    <input class="form__input" type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required />
+    <label class="form__label" for="email">Email</label>
+    <div class="form__input-error">Provide a valid email.</div>
+  </fieldset>
+  <fieldset class="form__group">
+    <input class="form__input" type="tel" id="phone" name="phone" placeholder="(415) 444-8888" pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" required />
+    <label class="form__label" for="phone">Phone Number</label>
+    <div class="form__input-error">Provide a valid phone number (415) 444-8888.</div>
+  </fieldset>
+  <fieldset class="form__group">
+    <input class="form__input" type="text" id="companyName" name="companyName" required />
+    <label class="form__label" for="companyName">Company Name</label>
+    <div class="form__input-error">Provide the company you work for.</div>
+  </fieldset>
+  <fieldset class="form__group">
+    <input class="form__input" type="text" id="companyWebsite" name="companyWebsite" pattern="^(?!-)(?:https?:\/\/)?[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$" required />
+    <label class="form__label" for="companyWebsite">Company Website</label>
+    <div class="form__input-error">Provide a valid company website.</div>
+  </fieldset>
+  <fieldset class="form__group">
+    <div class="form__select-wrapper">
+      <select class="form__input form__select" id="budget" name="budget" required>
+        <option value=""></option>
+        <option value="Less than $10,000">Less than $10,000</option>
+        <option value="$10,000 - $50,000">$10,000 - $50,000</option>
+        <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+        <option value="$100,000 - $250,000">$100,000 - $250,000</option>
+        <option value="$250,000 - $500,000">$250,000 - $500,000</option>
+        <option value="$500,000 - $1M">$500,000 - $1M</option>
+        <option value="Greater than $1M">Greater than $1M</option>
+      </select>
+      <label class="form__label" for="budget">Monthly Ad Spend</label>
+      <div class="form__input-error">Approximate your monthly ad spend.</div>
+    </div>
+  </fieldset>
+  <!-- { errors.name && <p>{errors.name}</p> } -->
+
   <!-- {errors.password && <p>{errors.password}</p>} -->
-  <button>Register</button>
+  <button class="button button--icon button--outline">Book a Call</button>
 </form>
+<div class="contact-form__message">
+  <div class="contact-form__success contact-form__success--hide">Thanks! We will contact you shortly.</div>
+  <div class="contact-form__error contact-form__error--hide">Please correct the errors and resubmit.</div>
+</div>
+
+<style>
+  .contact-form {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-form--hide {
+    display: none;
+  }
+
+  .form__group {
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 0;
+    border: 0;
+  }
+
+  .form__label {
+    pointer-events: none;
+    line-height: calc(3rem + 2px);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    display: block;
+    font-size: 1rem;
+    padding: 0;
+    transition: color,background,border,transform;
+    transform: translateY(0) scale(1);
+    transform-origin: left top;
+    color: #aaa;
+  }
+
+  .form__input {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--color-white);
+    padding: 0.75rem 0;
+    line-height: 24px;
+    width: 100%;
+    color: var(--color-white);
+    font-size: 16px;
+
+    &:focus-visible {
+      border: none;
+      border-bottom: 1px solid var(--color-white);
+      outline: 0;
+    }
+
+    &:focus, &.form__input--filled {
+      ~ .form__label {
+        transform: translateY(calc(-1.5rem + -1px)) scale(.8);
+      }
+    }
+  }
+
+  .form__input::placeholder {
+    opacity: 0;
+  }
+
+  .form__input::-moz-placeholder {
+    opacity: 0;
+  }
+
+  .form__input::-webkit-input-placeholder {
+    opacity: 0;
+  }
+
+  .form__input::-moz-placeholder {
+    opacity: 0;
+  }
+  
+  .form__input::-ms-input-placeholder {
+    opacity: 0;
+  }
+
+  .form__input:focus::placeholder {
+    opacity: 1;
+  }
+
+  .form__input:focus::-moz-placeholder {
+    opacity: 1;
+  }
+
+  .form__input:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+
+  .form__input:focus::-moz-placeholder {
+    opacity: 1;
+  }
+  
+  .form__input:focus::-ms-input-placeholder {
+    opacity: 1;
+  }
+
+  .form__input.form__input--filled::placeholder {
+    opacity: 0;
+  }
+
+  .form__input.form__input--filled::-moz-placeholder {
+    opacity: 0;
+  }
+
+  .form__input.form__input--filled::-webkit-input-placeholder {
+    opacity: 0;
+  }
+
+  .form__input.form__input--filled::-moz-placeholder {
+    opacity: 0;
+  }
+  
+  .form__input.form__input--filled::-ms-input-placeholder {
+    opacity: 0;
+  }
+
+  .form__input:focus ~ .form__label {
+    transform: translateY(calc(-1.5rem + -1px)) scale(.8);
+  }
+
+  .form__select-wrapper {
+    position: relative;
+
+    &::before {
+      content: "";
+      background-image: url(/assets/select__arrow.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      display: block;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .form__input-error {
+    display: none;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #fd7750;
+
+    &.form__input-error--active {
+      display: block;
+    }
+  }
+
+  .contact-form__success--hide,
+  .contact-form__error--hide {
+    display: none;
+  }
+
+  .contact-form__success--active,
+  .contact-form__error--active {
+    display: block;
+  }
+
+  .contact-form__success {
+    font-size: 36px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .contact-form__error {
+    background-color: #fd7750;
+    padding: 1rem;
+    color: var(--color-white);
+    margin-top: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+  // built in inputs show the errors.  
+  const form = document.querySelector(".contact-form");
+  const formInputs = document.querySelectorAll('.form__input');
+  const formSuccessMessage = document.querySelector(".contact-form__success");
+  const formErrorMessage = document.querySelector(".contact-form__error");
+
+  formInputs.forEach(element => {
+    element.addEventListener('change', (event) => {
+      // Check if value is missing
+      if(!element.validity.valueMissing) {
+        element.classList.add('form__input--filled');
+        var next = element.nextElementSibling;
+
+      } else {
+        element.classList.remove('form__input--filled');
+      }
+
+      // check if valid
+      if(element.validity.valid) {
+        var next = element.nextElementSibling;
+
+        while(next) {
+          if( next.nodeType == Node.ELEMENT_NODE && next.classList.contains('form__input-error')) {
+            next.classList.remove('form__input-error--active');
+            break;
+          }
+
+          next = next.nextSibling
+        }
+
+      } else {
+        var next = element.nextElementSibling;
+
+        while(next) {
+          if( next.nodeType == Node.ELEMENT_NODE && next.classList.contains('form__input-error')) {
+            next.classList.add('form__input-error--active');
+            break;
+          }
+
+          next = next.nextSibling
+        }
+      }
+    })
+  });
+
+  /**
+   * Shows an error for the input.
+   * @param element - element of input
+   */
+   const showError = (element) => {
+    var next = element.nextElementSibling;
+
+    // find the element with the error that needs to be displayed
+    while(next) {
+      if( next.nodeType == Node.ELEMENT_NODE && next.classList.contains('form__input-error')) {
+        next.classList.add('form__input-error--active');
+        break;
+      }
+
+      next = next.nextSibling
+    }
+  }
+
+  /**
+   * Goes through all form fields and displays message returns true if all are valid.
+   */
+  const ifFormValid = () => {
+    var valid = true;
+  
+    formInputs.forEach(element => {
+      if(!element.validity.valid) {
+        console.error('input not valid');
+        showError(element);
+        valid = false;
+      }
+    });
+
+    return valid;
+  }
+
+  const submitContact = async (event) => {
+    console.log('event', event.target);
+    const formData = new FormData(event.target);
+
+    console.log(formData);
+    
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+
+    const jsonObject = {};
+    formData.forEach((value, key) => {
+      jsonObject[key] = value;
+    });
+
+  const jsonData = JSON.stringify(jsonObject);
+
+    const response = await fetch('api/contactForm', {
+      method: "POST",
+      body: jsonData,
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+
+    const formResponse = await response.json();
+    const errorFields =  formResponse.errorFields;
+    console.log(errorFields);
+
+    if(formResponse.body.success) {
+      form.classList.add('contact-form--hide');
+      formSuccessMessage.classList.remove('contact-form__success--hide');
+      formSuccessMessage.classList.add('contact-form__success--active');
+    } else {
+      formErrorMessage.classList.remove('contact-form__error--hide');
+      formErrorMessage.classList.add('contact-form__error--active');
+
+      if(errorFields.length) {
+        // Display forms fields that have a problem.
+        if (Array.isArray(errorFields)) {
+          errorFields.forEach( (field) => {
+            let query = "[name=" + field + "]";
+            let showField = document.querySelector(query);
+            let showFieldError = showField.parentElement.querySelector('.form__input-error');
+            showFieldError.classList.add('form__input-error--active');
+          });
+        } else {
+          console.log("Values is not an array");
+        }
+      } else {
+
+      }
+
+    }
+
+  }
+
+  // we need to gather all the form data.
+  
+  form.addEventListener( 'submit', (event) => {
+    event.preventDefault();
+    if (ifFormValid()) {
+      // Prevent the form from being sent by canceling the event
+      submitContact(event);
+    }
+
+  });
+</script>
