@@ -21,6 +21,18 @@ img {
   height: auto;
 }
 
+.no-scroll {
+  @media screen and (max-width: 1023px) {
+    overflow: hidden;
+  }
+
+  #app {
+    @media screen and (max-width: 1023px) {
+      position: relative;
+    }
+  }
+}
+
 .section--full {
   padding: 0 calc(var(--spacer)*2);
 }

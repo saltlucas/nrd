@@ -21,6 +21,11 @@
   background-image: url('/assets/button-arrow.svg');
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 .button--black {
   background-color: var(--color-black);
   color: var(--color-white);

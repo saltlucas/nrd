@@ -90,21 +90,36 @@ import FooterLarge from '../components/FooterLarge.astro';
 		<section class="process__steps section--full">
 			<Accordion orderedList="true">
 				<AccordionItem preLabel="01" header="Discovery & Research">
-					<h3>Unveil your brand story</h3>
-					<div>
-						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					<div class="proccess__accordion-item-content">
+						<h3 class="process__item-blockquote">Deepen Your Understanding of Your Target Audience</h3>
+						<div class="process__item-content">
+							<img class="process__item-img" loading="lazy" src="/assets/discovery-research.jpg">
+							<h3 class="process__item-header">Understand Your Target Audience</h3>
+							<p class="process__item-copy">With more and more consumers cutting the cord, connected TV is becoming an increasingly important channel for video advertising. Our team has the expertise to craft effective campaigns that reach viewers on their smart TVs, streaming devices, and gaming consoles.</p>
+							<a class="button button--icon button--black process__item-button">Our Services</a>
+						</div>
 					</div>
 				</AccordionItem>
 				<AccordionItem preLabel="02" header="Video Production">
-					<h3>Video that turns heads</h3>
-					<div>
-						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					<div class="proccess__accordion-item-content">
+						<h3 class="process__item-blockquote">Deepen Your Understanding of Your Target Audience</h3>
+						<div class="process__item-content">
+							<img class="process__item-img" loading="lazy" src="/assets/production.jpg">
+							<h3 class="process__item-header">Understand Your Target Audience</h3>
+							<p class="process__item-copy">With more and more consumers cutting the cord, connected TV is becoming an increasingly important channel for video advertising. Our team has the expertise to craft effective campaigns that reach viewers on their smart TVs, streaming devices, and gaming consoles.</p>
+							<a class="button button--icon button--black process__item-button">Our Services</a>
+						</div>
 					</div>
 				</AccordionItem>
 				<AccordionItem preLabel="03" header="Next-Level Media Buying">
-					<h3>We get results</h3>
-					<div>
-						we leverage cutting-edge analytics and insights to gather data on audience behavior and preferences, as well as industry trends and best practices. This allows us to develop a custom video marketing strategy that speaks directly to our clients' target audience and achieves their unique business goals."
+					<div class="proccess__accordion-item-content">
+						<h3 class="process__item-blockquote">Deepen Your Understanding of Your Target Audience</h3>
+						<div class="process__item-content">
+							<img class="process__item-img" loading="lazy" src="/assets/distribution.jpg">
+							<h3 class="process__item-header">Understand Your Target Audience</h3>
+							<p class="process__item-copy">With more and more consumers cutting the cord, connected TV is becoming an increasingly important channel for video advertising. Our team has the expertise to craft effective campaigns that reach viewers on their smart TVs, streaming devices, and gaming consoles.</p>
+							<a class="button button--icon button--black process__item-button">Our Services</a>
+						</div>
 					</div>
 				</AccordionItem>
 			</Accordion>
@@ -220,8 +235,10 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.work__highlights {
-		display: flex;
-		column-gap: 2rem;
+		@media (--lg) {
+			display: flex;
+			column-gap: 2rem;
+		}
 	}
 
 	.work__content {
@@ -270,6 +287,32 @@ import FooterLarge from '../components/FooterLarge.astro';
 		display: flex;
 		justify-content: flex-end;
 		margin-bottom: 2rem;
+	}
+
+	.process__item-blockquote {
+		font-size: 4.625rem;
+	}
+
+	.process__item-header {
+		font-size: 2rem;
+	}
+
+	.process__item-copy {
+		font-size: 1.25rem;
+	}
+
+	.proccess__accordion-item-content {
+		@media (--lg) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			column-gap: 15%;
+			align-items: center;
+			padding: 3rem 0;
+		}
+	}
+
+	.process__item-button {
+		margin-top: 1.3rem;
 	}
 
 	.about {

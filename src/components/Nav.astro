@@ -1,4 +1,7 @@
-<nav class="nav">
+---
+const { modal } = Astro.props;
+---
+<nav class:list={['nav', { 'nav--modal': modal } ]}>
   <ul class="nav__list">
     <li class="nav__item">
       <a href="" class="nav__link">Our Approach</a>
@@ -12,8 +15,15 @@
   </ul>
 </nav>
 <style>
-  .nav {
+  @import '../styles/common/media-queries.css';
+
+  .nav:not(.nav--modal) {
+    display: none;
     margin-left: auto;
+
+    @media (--lg) {
+      display: block;
+    }
   }
 
   .nav__list {
@@ -29,4 +39,9 @@
     white-space: nowrap;
   }
 
+  .nav--modal {
+    .nav__list {
+      flex-direction: column;
+    }
+  }
 </style>
