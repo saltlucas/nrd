@@ -2,7 +2,7 @@
   import ScrollingText from './ScrollingText.astro';
   import ContactForm from './ContactForm.astro';
 ---
-<footer class="footer-large">
+<footer class="footer-large section--full">
   <ScrollingText />
   <div class="footer-contact">
     <div class="footer-contact__info">
@@ -28,6 +28,7 @@
   .footer-large {
     background-color: var(--color-black);
     padding-bottom: 5rem;
+    overflow: hidden;
   }
 
   .footer-highlight {
@@ -59,9 +60,21 @@
   }
 
   .contact__text {
-    font-size: 36px;
-    letter-spacing: -0.3px;
-    color: #FAFAFA;
+    font-size: 2rem;
+
+    @media (--lg) {
+      font-size: 36px;
+      letter-spacing: -0.3px;
+      color: #FAFAFA;
+    }
+  }
+
+  .footer-contact__info {
+    margin-bottom: 2rem;
+
+    @media (--lg) {
+      margin-bottom: 2rem;
+    }
   }
 
   a {

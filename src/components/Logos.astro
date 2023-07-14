@@ -3,12 +3,18 @@
 </div>
 
 <style>
+	@import '../styles/common/media-queries.css';
+
   .logos {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
     column-gap: 2rem;
     row-gap: 6rem;
+
+    @media (--lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 </style>

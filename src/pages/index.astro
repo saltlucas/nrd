@@ -24,7 +24,7 @@ import FooterLarge from '../components/FooterLarge.astro';
 		</section>
 		<section class="highlight-video section--full">
 			<!-- <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/778256941?h=315e814014&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
-			<video class="highlight-video__video" autoplay muted loop>
+			<video class="highlight-video__video" controls muted loop>
 				<!-- <source src="/asset/cc0-videos/flower.webm" type="video/webm"> -->
 		
 				<source src="/assets/video/nrd-sizzle.mp4" type="video/mp4">
@@ -44,11 +44,11 @@ import FooterLarge from '../components/FooterLarge.astro';
 				&copy; 2023
 			</p>
 		</section>
-		<section class="work__header section--full">
-			<p class="work__header-title">
+		<section class="work__header section-header section--full">
+			<h2 class="work__header-title section-header__title">
 				Our Work
-			</p>
-			<p class="work__header-content">
+			</h2>
+			<p class="work__header-content section-header__content">
 				Beautifully Crafted <span class="underline">Content</span> That Delivers Results
 			</p>
 		</section>
@@ -76,11 +76,11 @@ import FooterLarge from '../components/FooterLarge.astro';
 				<img class="logo" loading="lazy" src="/assets/teladoc.svg">
 			</Logos>
 		</section>
-		<section class="process__header section--full">
-			<p class="process__header-title">
+		<section class="process__header section-header section--full">
+			<h2 class="process__header-title section-header__title">
 				Our Approach
-			</p>
-			<p class="process__header-content">
+			</h2>
+			<p class="process__header-content section-header__content">
 				Where We Unite Strategy, Storytelling, &  Distribution
 			</p>
 		</section>
@@ -164,23 +164,32 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.highlight__content {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
+		margin-top: 4rem;
 		margin-bottom: 0.5rem;
-		margin-top: 8rem;
+
+		@media (--lg) {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			margin-top: 8rem;
+		}
 	}
 
 	.highlight__title {
-		font-size: 34px;
+		font-size: 28.43px;
 		line-height: 1.2;
 
 		@media (--md) {
 			max-width: 658px;
 		}
+		
+		@media (--lg) {
+			font-size: 34px;
+		}
 	}
 
 	.highlight__button {
+		margin-top: 0.5rem;
 		display: flex;
 		column-gap: 0.25rem;
 		align-items: center;
@@ -203,7 +212,10 @@ import FooterLarge from '../components/FooterLarge.astro';
 		margin-top: 0.5rem;
 	}
 
-	.work__header {
+	.section-header {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+
 		@media (--lg) {
 			display: flex;
 			flex-direction: column;
@@ -211,18 +223,35 @@ import FooterLarge from '../components/FooterLarge.astro';
 			justify-content: center;
 			padding-top: 2rem;
 			padding-bottom: 2rem;
-			min-height: 50vh		}
-	}
-	
-	.work__header-title {
-		font-size: 30px;
+			min-height: 460px;		
+		}
 	}
 
-	.work__header-content {
-		font-size: 72px;
-		line-height: 1.3;
-		max-width: 900px;
+	.section-header__title {
+		font-size: 16px;
+
+		@media (--lg) {
+			font-size: 30px;
+		}
 	}
+
+	.section-header__content {
+		font-size: 50px;
+		line-height: 1.4;
+
+		@media (--lg) {
+			font-size: 72px;
+			line-height: 1.3;
+			max-width: 900px;
+		}
+	}
+
+	/* .work__header {
+	} */
+	
+	/* .work__header-title
+	.work__header-content */
+
 
 	.work__cta {
 		display: flex;
@@ -235,8 +264,12 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.work__highlights {
+		display: flex;
+		flex-direction: column;
+		row-gap: 2rem;
+	
 		@media (--lg) {
-			display: flex;
+			flex-direction: row;
 			column-gap: 2rem;
 		}
 	}
@@ -261,27 +294,18 @@ import FooterLarge from '../components/FooterLarge.astro';
 		max-height: 40px;
 	}
 
-	.process__header {
-		@media (--lg) {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: center;
-			padding-top: 2rem;
-			padding-bottom: 2rem;
-			min-height: 50vh
-		}
-	}
+	/* .process__header {
+	} */
 	
-	.process__header-title {
+	/* .process__header-title {
 		font-size: 30px;
-	}
+	} */
 
-	.process__header-content {
+	/* .process__header-content {
 		font-size: 72px;
 		line-height: 1.3;
 		max-width: 900px;
-	}
+	} */
 
 	.process__cta {
 		display: flex;
@@ -290,7 +314,11 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.process__item-blockquote {
-		font-size: 4.625rem;
+		font-size: 35.3px;
+
+		@media (--lg) {
+			font-size: 4.625rem;
+		}
 	}
 
 	.process__item-header {
@@ -328,9 +356,13 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.about__content {
-		padding: 0 4rem;
+		padding: 0 1rem;
 		display: flex;
 		flex-direction: column;
+
+		@media (--lg) {
+			padding: 0 4rem;
+		}
 	}
 
 	.about__content-title {
@@ -342,12 +374,19 @@ import FooterLarge from '../components/FooterLarge.astro';
 	}
 
 	.about__content-line {
-		font-size: 36px;
+		font-size: 20px;
+    margin-top: 2rem;
+
+		@media (--lg) {
+			font-size: 36px;
+		}
 	}
 
 	.about__button {
 		dipslay: inline-block;
 		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+
 		@media (--lg) {
 			align-self: flex-start;
 		}

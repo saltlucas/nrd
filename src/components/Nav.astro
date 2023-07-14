@@ -41,7 +41,13 @@ const { modal } = Astro.props;
 
   .nav--modal {
     .nav__list {
-      flex-direction: column;
+      display: block;
+    }
+
+    .nav__link {
+      display: block;
+      line-height: 2.5;
+      padding: 0 1.5rem;
     }
   }
 </style>
