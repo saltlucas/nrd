@@ -2,7 +2,7 @@
   const { header, preLabel } = Astro.props;
 ---
 
-<div class="accordion__item">
+<div class="accordion__item active">
   <div class="accordion__item-header">
     { preLabel && <span class="accordion__item-label">{preLabel}</span>}
     { preLabel && <span class="accordion__item-dash"></span>}
@@ -53,29 +53,6 @@
     @media (--lg) {
       padding: calc(3*var(--spacer)) calc(3*var(--spacer));
     }
-
-    /* &:hover {
-      background-color: var(--color-black);
-      color: var(--color-white);
-
-      .accordion__item-dash::after {
-        background-color: var(--color-white);
-      }
-
-      .accordion__plus {
-        path {
-          fill: var(--color-white);
-        }
-
-        line {
-          stroke: var(--color-white);
-        }
-      }
-
-      .accordion__item-content :global(h3) {
-        color: var(--color-white);
-      }
-    } */
   
     &:first-child {
       border-top: 1px solid var(--color-gray);
@@ -90,12 +67,7 @@
         background-image: url('/assets/minus.svg');
       }
 
-      .plus__vertical {
-        /* display: none; */
-      }
-
       .plus__horizontal {
-        /* transform: rotate(90deg) translate(0, 2px); */
         transform: rotate(90deg);
       }
 
@@ -113,17 +85,6 @@
       font-size: 32px;
       column-gap: 0.75rem;
     }
-    
-    /* &::after {
-      content: '';
-      background-image: url('/assets/plus.svg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: inline-block;
-      margin-left: auto;
-      width: 54px;
-      height: 54px;
-    } */
   }
 
   .accordion__plus {
