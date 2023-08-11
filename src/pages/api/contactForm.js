@@ -6,13 +6,6 @@ import sendgrid from "@sendgrid/mail";
 
 
 export const post = async ({request}) => {
-  // const data = await request;
-  // console.log('data', data);
-  // console.log('body', requestNew.body);
-  // console.log(data.get('name'));
-  // console.log('formData', formData);
-
-
   if (request.headers.get("Content-Type") === "application/json") {
     const body = await request.json();
     
@@ -26,7 +19,6 @@ export const post = async ({request}) => {
     var companyWebsite = "";
     var budget = "";
 
-    console.log('email raw', body.email);
 
     // Validate
     const nameRegex = /^[a-zA-Z ]{2,40}$/;
@@ -44,7 +36,6 @@ export const post = async ({request}) => {
 
     if(body.email && emailRegex.test(body.email)) {
       email = body.email;
-      console.log('email', email);
     } else {
       console.error('error with email');
       errorFields.push('email');
@@ -99,7 +90,6 @@ export const post = async ({request}) => {
     };
     try {
       await sendgrid.send(msg);
-      console.log('email sent');
       isSendGridSuccess = true;
 
       return new Response(
