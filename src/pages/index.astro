@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import downArrow from '/assets/down-arrow.svg';
 import ClientCard from '../components/ClientCard.astro';
+import Video from '../components/Video.astro';
 import Logos from '../components/Logos.astro';
 import Accordion from '../components/Accordion.astro';
 import AccordionItem from '../components/AccordionItem.astro';
@@ -23,18 +24,7 @@ import FooterLarge from '../components/FooterLarge.astro';
 			</div>
 		</section>
 		<section class="highlight-video section--full">
-			<!-- <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/778256941?h=315e814014&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
-			<video class="highlight-video__video" controls muted loop>
-				<!-- <source src="/asset/cc0-videos/flower.webm" type="video/webm"> -->
-		
-				<source src="/assets/video/nrd-sizzle.mp4" type="video/mp4">
-		
-				Download the
-				<!-- <a href="/media/cc0-videos/flower.webm">WEBM</a> -->
-				or
-				<a href="/media/cc0-videos/flower.mp4">MP4</a>
-				video.
-			</video> 
+			<Video thumbnail="https://vz-7b4476df-ca0.b-cdn.net/235f2697-f823-4912-87fd-025a3a5e23df/thumbnail_a6c9e9eb.jpg?v=1691726094" hls="https://vz-7b4476df-ca0.b-cdn.net/235f2697-f823-4912-87fd-025a3a5e23df/playlist.m3u8?v=1691557342" autoplay="true" />
 		</section>
 		<section class="highlight-video__footer section--full">
 			<p class="highlight-video__footer-left">
@@ -56,8 +46,8 @@ import FooterLarge from '../components/FooterLarge.astro';
 			<a class="button button--icon button--black">See Our Work</a>
 		</section>
 		<section class="work__highlights section--full">
-			<ClientCard alt="Lululemon" src="/assets/client1.jpg" video="/assets/video/Lululemon.mp4" title="Lululemon" industry="Exercise Apparel Company" />
-			<ClientCard alt="Serena & Lily" src="/assets/client2.jpg" video="/assets/video/Serena_&_Lily__Pamper_Yourself.mp4" title="Serena & Lily" industry="Furniture" />
+			<ClientCard alt="Lululemon" src="/assets/client1.jpg" video="https://vz-7b4476df-ca0.b-cdn.net/bf498154-6932-48f9-b558-d232c37f9d8a/playlist.m3u8?v=1691727407" thumbnail="https://vz-7b4476df-ca0.b-cdn.net/bf498154-6932-48f9-b558-d232c37f9d8a/thumbnail_3f594083.jpg?v=1691727407" title="Lululemon" industry="Exercise Apparel Company" />
+			<ClientCard alt="Serena & Lily" src="/assets/client2.jpg" video="https://vz-7b4476df-ca0.b-cdn.net/0c69f748-84a2-4022-8205-ff55e269373d/playlist.m3u8?v=1691727477" thumbnail="https://vz-7b4476df-ca0.b-cdn.net/0c69f748-84a2-4022-8205-ff55e269373d/thumbnail.jpg?v=1691727477" title="Serena & Lily" industry="Furniture" />
 		</section>
 		<section class="work__content section--full">
 			<p>
