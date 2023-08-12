@@ -1,16 +1,12 @@
 ---
 import Video from './Video.astro';
 
-const {alt, src, video, thumbnail, title, industry} = Astro.props;
+const {video, thumbnail, title, industry} = Astro.props;
 ---
 
 <div class="client-card">
-  <!-- <img loading="lazy" alt={alt} src={src}> -->
   <Video thumbnail={thumbnail} hls={video} />
-  <!-- <video class="client-card__video" controls muted loop>
-    <source src={video} type="video/mp4">
-    <a href="/media/cc0-videos/flower.mp4">MP4</a>
-  </video>  -->
+
   <div class="client-card__content">
     <p class="client-card__title">{title}</p>
     <p class="client-card__industry">({industry})</p>
