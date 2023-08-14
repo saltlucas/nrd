@@ -51,7 +51,7 @@
     position: relative;
     display: flex;
     height: 66px;
-    column-gap: 2rem;
+    column-gap: 1rem;
     align-items: center;
     border-bottom: 1px solid var(--color-black);
     background-color: var(--color-white);
@@ -63,7 +63,8 @@
 
     @media (--md) {
       padding: 0 calc(var(--spacer)*2);
-      height: 91px;
+      height: 91px;    
+      column-gap: 2rem;
     }
 
     .logo--light {
@@ -108,7 +109,12 @@
 
   .header__button {
     flex-shrink: 0;
-    display: none;
+    padding: 0 15px;
+    margin-left: auto;
+
+    @media (--md) {
+      padding: 0 30px;
+    }
 
     @media (--lg) {
       display: flex;
@@ -194,6 +200,7 @@
   .header__menu-toggle {
     margin-left: auto;
     cursor: pointer;
+    display: none;
 
     @media (--lg) {
       margin-left: initial;
