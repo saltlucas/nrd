@@ -7,9 +7,27 @@ import Logos from '../components/Logos.astro';
 import Accordion from '../components/Accordion.astro';
 import AccordionItem from '../components/AccordionItem.astro';
 import FooterLarge from '../components/FooterLarge.astro';
+import { SEO } from 'astro-seo';
 ---
 
 <Layout title="New Rev Digital">
+	<SEO slot="head"
+		title="Performance Video Marketing by New Rev Digital"
+		description="Elevate your brand with captivating video creative and world-class video advertising solutions."
+		openGraph={{
+			basic: {
+				title: "Performance Video Marketing by New Rev Digital",
+				type: "article",
+				image: "https://newrevdigital.com/assets/Neato.jpg",
+			},
+			optional: {
+				description: "Elevate your brand with captivating video creative and world-class video advertising solutions.",
+			}
+		}}
+		twitter={{
+			card: "summary_large_image",
+		}}
+	/>
 	<main>
 		<section class="page__header section--full">
 			<h1>Amplify Your Brand with Performance Video Marketing</h1>
