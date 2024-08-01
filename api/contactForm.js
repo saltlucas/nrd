@@ -72,10 +72,10 @@ export const post = async ({request}) => {
 
   if(!errorFields.length) {
     // send with sendgrid
-    sendgrid.setApiKey(import.meta.env.SENDGRID_API_KEY);
+    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
-      to: import.meta.env.TO_EMAIL_ADDRESS,
-      from: { email: import.meta.env.FROM_EMAIL_ADDRESS, name: "NRD Form" },
+      to: process.env.TO_EMAIL_ADDRESS,
+      from: { email: process.env.FROM_EMAIL_ADDRESS, name: "NRD Form" },
       replyTo: email,
       subject: `NRD Form Submission: ${companyName}`,
       text: `
